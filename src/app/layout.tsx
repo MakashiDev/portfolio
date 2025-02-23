@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-black text-white min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-black text-white min-h-screen flex flex-row`}
       >
         <Navigation />
-        <div className="relative z-10">
+        <div className="z-10 w-full mt-16 md:mt-0">
           {children}
         </div>
         <div className="fixed inset-0 bg-gradient-to-br from-violet-900/20 via-black to-black -z-10" />

@@ -23,7 +23,7 @@ export default function Navigation() {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
-        className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 md:hidden"
+        className="fixed top-6 left-6 z-50 p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 md:hidden"
       >
         <div className="w-6 h-5 relative flex flex-col justify-between">
           <span className={`w-full h-0.5 bg-violet-400 transition-transform ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -33,12 +33,14 @@ export default function Navigation() {
       </button>
 
       {/* Navigation Menu */}
-      <AnimatePresence>
-        <motion.nav
-          initial={{ x: -300 }}
-          animate={{ x: isOpen ? 0 : +0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="fixed top-0 left-0 h-full w-64 bg-black/95 backdrop-blur-lg border-r border-white/10 z-40 md:translate-x-0"
+      <AnimatePresence mode="wait">
+        {(isOpen || window.innerWidth >= 768) && (
+          <motion.nav
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed relative min-h-screen  w-64 bg-black/95 backdrop-blur-lg border-r border-white/10 z-40 md:translate-x-0"
         >
           <div className="p-8 pt-20 md:pt-8">
             <div className="space-y-6"> 
@@ -55,6 +57,7 @@ export default function Navigation() {
             </div>
           </div>
         </motion.nav>
+        )}
       </AnimatePresence>
 
       {/* Overlay for mobile */}

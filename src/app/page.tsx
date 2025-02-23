@@ -23,8 +23,8 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen p-8 md:p-24">
-      <div className="max-w-5xl mx-auto space-y-24">
+    <main className="min-h-screen p-8 md:p-24 w-full">
+      <div className="flex flex-col justify-center content-center fr space-y-24">
         {/* Hero Section */}
         <motion.div
           initial="initial"
