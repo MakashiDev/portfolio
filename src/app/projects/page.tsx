@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     title: 'Book of Mormonn API',
     description: 'A REST API that provides access to the Book of Mormon scriptures, allowing users to search for scriptures by chapter, verse, and content.',
-    technologies: ['Node,js', 'Express', 'Tailwind CSS', 'CORS'],
+    technologies: ['Node.js', 'Express', 'Tailwind CSS', 'CORS'],
     githubLink: 'https://github.com/makashidev/bom_api',
     websiteLink: 'https://bom.christianfurr.dev'
   },
