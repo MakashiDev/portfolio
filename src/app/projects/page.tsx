@@ -14,10 +14,16 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Qoutebook App",
+    description: "An app that allows users to create and share quotes with their friends in real time",
+    technologies: ["Convex", "Next.js", "Tailwind CSS", "Clerk", "Vercel"],
+    websiteLink: "https://qoutebook.christianfurr.dev"
+  },
+  {
     title: "BYU Basketball Roster",
     description: "A web application that provides the upcoming BYU basketball roster, allowing users to view incoming players and their stats.",
     technologies: ["React", "Next.js", "Tailwind CSS", "Clerk", "AWS", "Vercel"],
-    githubLink: "github.com/MakashiDev/byu-basketball",
+    githubLink: "https://github.com/MakashiDev/byu-basketball",
     websiteLink: "https://byu.christianfurr.dev"
   },
   {
