@@ -14,6 +14,19 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "BYU Basketball Roster",
+    description: "A web application that provides the upcoming BYU basketball roster, allowing users to view incoming players and their stats.",
+    technologies: ["React", "Next.js", "Tailwind CSS", "Clerk", "AWS", "Vercel"],
+    githubLink: "github.com/MakashiDev/byu-basketball",
+    websiteLink: "https://byu.christianfurr.dev"
+  },
+  {
+    title: "Caden Mann SCO Campaign",
+    description: "A campaign website for Caden Mann, a candidate for Riverton High School SCO, showcasing his platform and vision.",
+    technologies: ["Next.js", "Tailwind CSS", "Clerk", "AWS", "Vercel"],
+    websiteLink: "https://cadenmann.com"
+  },
+  {
     title: 'Book of Mormonn API',
     description: 'A REST API that provides access to the Book of Mormon scriptures, allowing users to search for scriptures by chapter, verse, and content.',
     technologies: ['Node,js', 'Express', 'Tailwind CSS', 'CORS'],

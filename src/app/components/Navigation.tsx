@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const pathname = usePathname();
 
   const navItems = [
@@ -17,9 +18,22 @@ export default function Navigation() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  useEffect(() => {
+    // Check if the screen width is >= 768px
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+
+    // Run on mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
-
       {/* Mobile Menu Button */}
       <button
         onClick={toggleMenu}
@@ -34,29 +48,33 @@ export default function Navigation() {
 
       {/* Navigation Menu */}
       <AnimatePresence mode="wait">
-        {(isOpen || window.innerWidth >= 768) && (
+        {(isOpen || isDesktop) && (
           <motion.nav
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed relative min-h-screen  w-64 bg-black/95 backdrop-blur-lg border-r border-white/10 z-40 md:translate-x-0"
-        >
-          <div className="p-8 pt-20 md:pt-8">
-            <div className="space-y-6"> 
-              {navItems.map((item) => (
-                <Link
-                  key={item.path}
-                  href={item.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`block px-4 py-2 rounded-lg transition-colors ${pathname === item.path ? 'bg-violet-600/20 text-violet-400' : 'text-gray-400 hover:text-violet-400 hover:bg-white/5'}`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+            className="fixed relative min-h-screen w-64 bg-black/95 backdrop-blur-lg border-r border-white/10 z-40 md:translate-x-0"
+          >
+            <div className="p-8 pt-20 md:pt-8">
+              <div className="space-y-6">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`block px-4 py-2 rounded-lg transition-colors ${
+                      pathname === item.path
+                        ? 'bg-violet-600/20 text-violet-400'
+                        : 'text-gray-400 hover:text-violet-400 hover:bg-white/5'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        </motion.nav>
+          </motion.nav>
         )}
       </AnimatePresence>
 

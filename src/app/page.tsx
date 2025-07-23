@@ -22,7 +22,7 @@ export default function Home() {
     'SQL',
   ];
 
-  return (
+  return (  
     <main className="min-h-screen p-8 md:p-24 w-full">
       <div className="flex flex-col justify-center content-center fr space-y-24">
         {/* Hero Section */}
